@@ -7,9 +7,9 @@ const cookieParser = require("cookie-parser");
 
 // Setting Up connection
 mongoose.set('strictQuery', false);
-// const dbURL = process.env.DB_URL || "mongodb://localhost:27017/iStockDB"
+const dbURL = process.env.DB_URL || "mongodb://localhost:27017/iStockDB"
 
-mongoose.connect("mongodb://localhost:27017/iStockDB", {useNewUrlParser: true}).then(()=>{
+mongoose.connect(dbURL, {useNewUrlParser: true}).then(()=>{
     console.log("Mongo Connected");
 }).catch(err=>{
     console.log("OH error");
