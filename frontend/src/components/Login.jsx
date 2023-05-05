@@ -39,13 +39,13 @@ const Login = (props) => {
                 if (email) generateError(email);
                 else if (password) generateError(password);
             } else {
-              props.setProgress(100);
-                navigate("/");
+              navigate("/");
             }
           }
         } catch (ex) {
           console.log(ex);
         }
+        props.setProgress(100);
     };
   return (
     <div className="d-flex register-container justify-content-center pt-5">

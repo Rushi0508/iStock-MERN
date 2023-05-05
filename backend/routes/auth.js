@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 const {fetchStore} = require("../middleware");
 const maxAge = 3 * 24 * 60 * 60;
-// Creating a Store - /api/auth/
+
 const handleErrors = (err) => {
     let errors = { email: "", password: "" , name:""};
   
@@ -34,6 +34,7 @@ const handleErrors = (err) => {
     }
     return errors;
   };
+  // Creating a Store - /api/auth/
 router.post("/",  async (req,res)=>{
     try{
         // let store = await  Store.findOne({email: req.body.email});
