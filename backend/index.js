@@ -15,6 +15,7 @@ mongoose.connect(dbURL, {useNewUrlParser: true}).then(()=>{
     console.log("OH error");
     console.log(err);
 });
+app.use(cookieParser());
 app.use(cors(
     {
         origin: ["http://localhost:3000"],
@@ -26,7 +27,6 @@ app.use(cors(
 app.get("/", (req,res)=>{
     res.send("Working");
 })
-app.use(cookieParser());
 app.use(express.json())
 // Routes
 const authRoutes = require("./routes/auth")
