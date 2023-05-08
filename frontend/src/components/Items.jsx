@@ -31,7 +31,7 @@ function Items(props) {
             // const sid = cookies.sid;
             // console.log(sid);
             const { data } = await axios.post(
-                "http://localhost:5000/api/item/items",
+                "https://istock.onrender.com/api/item/items",
                 {jwt: localStorage.getItem("jwt")},
                 {
                 withCredentials: true,

@@ -56,7 +56,7 @@ function AddItem(props) {
     } else {
       props.setProgress(40);
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/getstore",
+        "https://istock.onrender.com/api/auth/getstore",
         {jwt: localStorage.getItem("jwt")},
         {
           withCredentials: true,

@@ -233,7 +233,9 @@ tr:hover {
 .hide{
     display: none;
 }
-
+.mobile-nav-items{
+    font-family: 'DM Sans', sans-serif;
+}
 /* RESPONSIVE  */
 @media screen and (max-width: 900px){
     .login-form, .register-form{
