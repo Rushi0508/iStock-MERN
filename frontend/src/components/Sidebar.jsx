@@ -13,7 +13,7 @@ function Sidebar(props) {
     const navigate = useNavigate();
     const [cookies, setCookie, removeCookie] = useCookies([]);
     const logOut = () => {
-        removeCookie("jwt");
+        localStorage.removeItem("jwt");
         navigate("/login");
     };
     // Responsive 

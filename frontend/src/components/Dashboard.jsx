@@ -12,20 +12,21 @@ function Dashboard(props) {
   const [store, setStore] = useState("");
   const [calc, setCalc] = useState("");
   const verifyUser = async () => {
-    if (!cookies.jwt) {
+    if (!localStorage.getItem("jwt")) {
       console.log("NO COOKIES");
       navigate("/login");
     } else {
       props.setProgress(30);
       const { data } = await axios.post(
         "https://istock.onrender.com/api/auth/getstore",
-        {},
+        {jwt: localStorage.getItem("jwt")},
         {
           withCredentials: true,
         }
       );
+      console.log(data);
       if(!data.status){
-        removeCookie("jwt")
+        localStorage.removeItem("jwt")
         navigate("/login")
       }
       props.setProgress(100);

@@ -36,7 +36,7 @@ router.post("/stock-in",  async (req,res)=>{
 
 // Fetch all entries - /api/entry/entries
 router.post("/entries", async(req,res)=>{
-    const token = req.cookies.jwt;
+    const token = req.body.jwt;
     if (token) {
       jwt.verify(
         token,

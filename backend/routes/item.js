@@ -11,7 +11,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 // adding new item and entry - /api/item/
 router.post("/",  async (req,res)=>{
-    const token = req.cookies.jwt;
+    const token = req.body.jwt;
     if (token) {
       jwt.verify(
         token,
@@ -68,7 +68,7 @@ router.post("/",  async (req,res)=>{
 
 // Fetch all Items - /api/item/items
 router.post("/items",  async(req,res)=>{
-    const token = req.cookies.jwt;
+    const token = req.body.jwt;
     if (token) {
       jwt.verify(
         token,

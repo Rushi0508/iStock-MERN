@@ -8,7 +8,7 @@ const Register = (props) => {
     const [cookies] = useCookies(["cookie-name"]);
     const navigate = useNavigate();
     useEffect(() => {
-    if (cookies.jwt) {
+    if (localStorage.getItem("jwt")) {
         navigate(-1);
     }
     }, [cookies, navigate]);
@@ -26,7 +26,7 @@ const Register = (props) => {
         event.preventDefault();
         try {
           const { data } = await axios.post(
-            "http://localhost:5000/api/auth/",
+            "https://istock.onrender.com/api/auth/",
             {
               ...values,
             }, {
@@ -40,13 +40,14 @@ const Register = (props) => {
                 else if (email) generateError(email);
                 else if (password) generateError(password);
             } else {
-                props.setProgress(100);
+                localStorage.setItem("jwt", data.token);
                 navigate("/");
             }
-          }
-        } catch (ex) {
-          console.log(ex);
         }
+    } catch (ex) {
+        console.log(ex);
+    }
+    props.setProgress(100);
     };
   return (
     <div className="d-flex register-container justify-content-center pt-5">

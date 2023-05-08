@@ -22,7 +22,7 @@ function Items(props) {
     });
 
     const fetchItems = async()=>{
-        if (!cookies.jwt) {
+        if (!localStorage.getItem("jwt")) {
             console.log("NO COOKIES");
             navigate("/login");
         } 
@@ -32,7 +32,7 @@ function Items(props) {
             // console.log(sid);
             const { data } = await axios.post(
                 "http://localhost:5000/api/item/items",
-                {},
+                {jwt: localStorage.getItem("jwt")},
                 {
                 withCredentials: true,
                 }
@@ -58,7 +58,7 @@ function Items(props) {
         refClose.current.click();
         props.setProgress(30);
         const { data } = await axios.post(
-            "http://localhost:5000/api/item/edit",
+            "https://istock.onrender.com/api/item/edit",
             {...item},
             {
             withCredentials: true,
@@ -76,7 +76,7 @@ function Items(props) {
     const handleDelete = async (sid, iid) => {
         props.setProgress(50);
         const { data } = await axios.post(
-          "http://localhost:5000/api/item/delete",
+          "https://istock.onrender.com/api/item/delete",
           { id: sid, iid: iid },
           {
             withCredentials: true,

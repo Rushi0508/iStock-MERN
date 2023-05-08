@@ -12,15 +12,15 @@ const Entry = (props) => {
     const [entries, setEntries] = useState("");
     const [store, setStore] = useState("");
     const fetchEntries = async () => {
-        if (!cookies.jwt) {
-            console.log("NO COOKIES");
+        if (!localStorage.getItem("jwt")) {
+            console.log("NO JWT");
             navigate("/login");
         }
         else {
             props.setProgress(30);
             const { data } = await axios.post(
-                "http://localhost:5000/api/entry/entries",
-                {},
+                "https://istock.onrender.com/api/entry/entries",
+                {jwt: localStorage.getItem("jwt")},
                 {
                     withCredentials: true,
                 }

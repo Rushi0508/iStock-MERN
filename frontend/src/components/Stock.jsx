@@ -21,7 +21,7 @@ function Stock(props) {
         position: "bottom-right",
     });
     const fetchItems = async()=>{
-        if (!cookies.jwt) {
+        if (!localStorage.getItem("jwt")) {
             console.log("NO COOKIES");
             navigate("/login");
         } 
@@ -30,8 +30,8 @@ function Stock(props) {
             // const sid = cookies.sid;
             // console.log(sid);
             const { data } = await axios.post(
-                "http://localhost:5000/api/item/items",
-                {},
+                "https://istock.onrender.com/api/item/items",
+                {jwt: localStorage.getItem("jwt")},
                 {
                 withCredentials: true,
                 }

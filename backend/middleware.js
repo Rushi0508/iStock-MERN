@@ -21,7 +21,7 @@ const Item = require("./models/item")
 //     }
 // }
 module.exports.fetchStore = (req, res, next) => {
-    const token = req.cookies.jwt;
+    const token = req.body.jwt;
     if (token) {
       jwt.verify(
         token,

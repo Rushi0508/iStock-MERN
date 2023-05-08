@@ -18,7 +18,7 @@ mongoose.connect(dbURL, {useNewUrlParser: true}).then(()=>{
 app.use(cookieParser());
 app.use(cors(
     {
-        origin: ["https://istock-frontend.onrender.com"],
+        origin: ["https://i-stock-mernstack.vercel.app"],
         methods: ["GET", "POST"],
         credentials: true,
     }

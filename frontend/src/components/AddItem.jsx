@@ -16,8 +16,8 @@ function AddItem(props) {
         category: "",
         quantity: ""
     })
-    if (!cookies.jwt) {
-        console.log("NO COOKIES");
+    if (!localStorage.getItem("jwt")) {
+        console.log("NO JWT");
         navigate("/login");
     } 
     const generateError = (msg) =>
@@ -32,7 +32,7 @@ function AddItem(props) {
       props.setProgress(30);
         event.preventDefault();
         const { data } = await axios.post(
-            "http://localhost:5000/api/item/",
+            "https://istock.onrender.com/api/item/",
             {...values},
             {
             withCredentials: true,
@@ -50,20 +50,20 @@ function AddItem(props) {
         props.setProgress(100);
     }
   const verifyUser = async () => {
-    if (!cookies.jwt) {
-      console.log("NO COOKIES");
+    if (!localStorage.getItem("jwt")) {
+      console.log("NO JWT");
       navigate("/login");
     } else {
       props.setProgress(40);
       const { data } = await axios.post(
         "http://localhost:5000/api/auth/getstore",
-        {},
+        {jwt: localStorage.getItem("jwt")},
         {
           withCredentials: true,
         }
       );
       if(!data.status){
-        removeCookie("jwt")
+        localStorage.removeItem("jwt")
         navigate("/login")
       }
       setStore(data.store);
