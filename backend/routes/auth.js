@@ -93,7 +93,6 @@ router.post("/login", async(req,res)=>{
             httpOnly: true,
             secure: true,
             sameSite: "none",
-            domain: 'https://i-stock-mernstack.vercel.app',
             maxAge: maxAge * 1000,
         });
         // res.cookie("sid", store._id, {
