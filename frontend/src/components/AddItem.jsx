@@ -33,7 +33,7 @@ function AddItem(props) {
         event.preventDefault();
         const { data } = await axios.post(
             "https://istock.onrender.com/api/item/",
-            {...values},
+            {...values, jwt: localStorage.getItem("jwt")},
             {
             withCredentials: true,
             }
