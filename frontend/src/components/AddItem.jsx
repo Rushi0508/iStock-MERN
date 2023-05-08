@@ -71,6 +71,7 @@ function AddItem(props) {
     }
   };
   useEffect(() => {
+    document.title = "New Item | iStock"
     verifyUser();
   }, [cookies, navigate, removeCookie]);
   return (

@@ -44,6 +44,7 @@ function Items(props) {
         }
     }
     useEffect(() => {
+        document.title = "Items | iStock"
         fetchItems();
     }, []);
 

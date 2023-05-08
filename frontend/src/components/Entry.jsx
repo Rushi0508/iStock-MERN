@@ -32,6 +32,7 @@ const Entry = (props) => {
         }
     };
     useEffect(() => {
+        document.title = "Entries | iStock"
         fetchEntries();
     }, []);
     return (

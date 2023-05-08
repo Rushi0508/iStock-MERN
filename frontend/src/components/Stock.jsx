@@ -43,6 +43,7 @@ function Stock(props) {
         }
     }
     useEffect(() => {
+        document.title = "Stock | iStock"
         fetchItems();
     }, []);
     const inref = useRef(null);

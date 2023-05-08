@@ -8,9 +8,10 @@ const Register = (props) => {
     const [cookies] = useCookies(["cookie-name"]);
     const navigate = useNavigate();
     useEffect(() => {
-    if (localStorage.getItem("jwt")) {
-        navigate(-1);
-    }
+        if (localStorage.getItem("jwt")) {
+            navigate(-1);
+        }
+        document.title = "Register | iStock"
     }, [cookies, navigate]);
     const [values, setValues] = useState({
         name: "",

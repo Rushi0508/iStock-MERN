@@ -35,6 +35,7 @@ function Dashboard(props) {
     }
   };
   useEffect(() => {
+    document.title = "Dashboard | iStock"
     verifyUser();
   }, [cookies, navigate, removeCookie]);
   return (
