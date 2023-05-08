@@ -82,6 +82,7 @@ function Dashboard(props) {
           </div>
         </div>
       </div>
+      <div className="footer">Made with 🤍 by Rushi Gandhi</div>
     </>
   );
 }
