@@ -18,7 +18,7 @@ function Dashboard(props) {
     } else {
       props.setProgress(30);
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/getstore",
+        "https://istock.onrender.com/api/auth/getstore",
         {},
         {
           withCredentials: true,

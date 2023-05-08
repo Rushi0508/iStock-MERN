@@ -25,11 +25,12 @@ const Login = (props) => {
         event.preventDefault();
         try {
           const { data } = await axios.post(
-            "http://localhost:5000/api/auth/login",
+            "https://istock.onrender.com/api/auth/login",
             {
               ...values,
             }, {
-                withCredentials: true
+              withCredentials: true,
+              credentials: 'include'
             }
           );
           props.setProgress(80);
