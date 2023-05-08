@@ -65,7 +65,7 @@ function Stock(props) {
         incloseref.current.click();
         props.setProgress(30);
         const { data } = await axios.post(
-            "http://localhost:5000/api/entry/stock-in",
+            "https://istock.onrender.com/api/entry/stock-in",
             {...stock},
             {
             withCredentials: true,
@@ -89,7 +89,7 @@ function Stock(props) {
         outcloseref.current.click();
         props.setProgress(30);
         const { data } = await axios.post(
-            "http://localhost:5000/api/entry/stock-out",
+            "https://istock.onrender.com/api/entry/stock-out",
             {...stock},
             {
             withCredentials: true,
