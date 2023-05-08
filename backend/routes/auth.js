@@ -90,7 +90,8 @@ router.post("/login", async(req,res)=>{
         const authToken = jwt.sign(data, JWT_SECRET);
         res.cookie("jwt", authToken, {
             withCredentials: true,
-            httpOnly: false,
+            httpOnly: true,
+            secure: true,
             sameSite: "none",
             domain: 'https://i-stock-mernstack.vercel.app',
             maxAge: maxAge * 1000,
