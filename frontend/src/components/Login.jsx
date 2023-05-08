@@ -5,7 +5,7 @@ import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-    const [cookies, setCookie] = useCookies(["cookie-name"]);
+    const [cookies] = useCookies(["cookie-name"]);
     const navigate = useNavigate();
     useEffect(() => {
     if (cookies.jwt) {
@@ -40,13 +40,6 @@ const Login = (props) => {
                 if (email) generateError(email);
                 else if (password) generateError(password);
             } else {
-              const maxAge = 3 * 24 * 60 * 60;
-              setCookie("jwt", data.cookie, {
-                withCredentials: true,
-                httpOnly: false,
-                sameSite: "none",
-                maxAge: maxAge * 1000
-              })
               navigate("/");
             }
           }

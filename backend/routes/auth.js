@@ -88,18 +88,19 @@ router.post("/login", async(req,res)=>{
             }
         }
         const authToken = jwt.sign(data, JWT_SECRET);
-        // res.cookie("jwt", authToken, {
-        //     withCredentials: true,
-        //     httpOnly: false,
-        //     sameSite: "none",
-        //     maxAge: maxAge * 1000,
-        // });
+        res.cookie("jwt", authToken, {
+            withCredentials: true,
+            httpOnly: false,
+            sameSite: "none",
+            domain: 'https://i-stock-mernstack.vercel.app',
+            maxAge: maxAge * 1000,
+        });
         // res.cookie("sid", store._id, {
         //     withCredentials: true,
         //     httpOnly: false,
         //     maxAge: maxAge * 1000,
         // })
-        res.status(201).json({store: store._id,cookie: authToken, created: true});
+        res.status(201).json({store: store._id,created: true});
     }catch(err){
         const errors = handleErrors(err);
         res.json({errors, created: false});
