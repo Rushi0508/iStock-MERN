@@ -91,6 +91,7 @@ router.post("/login", async(req,res)=>{
         res.cookie("jwt", authToken, {
             withCredentials: true,
             httpOnly: false,
+            sameSite: "none",
             maxAge: maxAge * 1000,
         });
         // res.cookie("sid", store._id, {
