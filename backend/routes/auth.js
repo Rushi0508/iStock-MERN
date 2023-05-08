@@ -90,7 +90,7 @@ router.post("/login", async(req,res)=>{
         const authToken = jwt.sign(data, JWT_SECRET);
         res.cookie("jwt", authToken, {
             withCredentials: true,
-            httpOnly: false,
+            httpOnly: true,
             maxAge: maxAge * 1000,
         });
         // res.cookie("sid", store._id, {
