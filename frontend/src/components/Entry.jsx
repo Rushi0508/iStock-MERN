@@ -45,7 +45,7 @@ const Entry = (props) => {
                 {(entries.length == 0) ? <h1>NO ENTRIES AVAILABLE</h1> :
                     <div class="accordion" id="accordionExample">
                         {entries.map((entry, index) => {
-                            return <EntryItem key={entry._id} entry={entry} index={index} />
+                            return <EntryItem key={entry._id} store={store} entry={entry} index={index} />
                         }).reverse()}
                     </div>
                 }

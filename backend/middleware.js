@@ -31,7 +31,7 @@ module.exports.fetchStore = (req, res, next) => {
             res.json({ status: false });
             next();
           } else {
-            console.log(decodedToken);
+            // console.log(decodedToken);
             const store = await Store.findById(decodedToken.store.id).populate("entries");
             if (store){
               let sales=0,earning=0;

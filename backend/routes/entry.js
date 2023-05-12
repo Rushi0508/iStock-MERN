@@ -45,7 +45,7 @@ router.post("/entries", async(req,res)=>{
           if (err) {
             res.json({ status: false });
           } else {
-            console.log(decodedToken);
+            // console.log(decodedToken);
             const store = await Store.findById(decodedToken.store.id).populate('entries');
             if (store) res.json({ status: true,store: store, entries:store.entries  });
             else res.json({ status: false });

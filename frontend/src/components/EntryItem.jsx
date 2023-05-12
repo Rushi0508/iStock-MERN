@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import easyinvoice from 'easyinvoice';
 
 function EntryItem(props) {
   const displayPrice = (entry)=>{
@@ -18,6 +19,68 @@ function EntryItem(props) {
     else if(entry.operation==="purchase"){
       return <span><b>Purchase Amount:</b> &nbsp;{entry.quantity * entry.purchasePrice}</span>
     }
+  }
+  function downloadInvoice(entry,store){
+    var data = {
+        "client": {
+            "company": `${entry.partyName}`,
+            "country": "India"
+        },
+
+        "sender": {
+            "company": `${store.name}`,
+            "address": `${store.email}`,
+            "country": "India"
+        },
+
+        "images": {
+            logo: "https://public.easyinvoice.cloud/img/logo_en_original.png",
+        },
+
+        "information": {
+            // Invoice number
+            "number": `${entry._id}`,
+            // Invoice data
+            "date": `${entry.createdAt}`.substring(0,10),
+            // Invoice due date
+            "due-date": "-"
+        },
+
+        "products": [
+            {
+                "quantity": `${entry.quantity}`,
+                "description": `${entry.itemName}`,
+                "tax-rate": 0,
+                "price": `${entry.sellPrice}`
+            }
+        ],
+
+        "bottomNotice": "Kindly pay your invoice within 15 days.",
+
+        "settings": {
+            "currency": "INR", // See documentation 'Locales and Currency' for more info. Leave empty for no currency.
+        },
+        "translate": {
+            /*
+            "invoice": "FACTUUR",  // Default to 'INVOICE'
+            "number": "Nummer", // Defaults to 'Number'
+            "date": "Datum", // Default to 'Date'
+            "due-date": "Verloopdatum", // Defaults to 'Due Date'
+            "subtotal": "Subtotaal", // Defaults to 'Subtotal'
+            "products": "Producten", // Defaults to 'Products'
+            "quantity": "Aantal", // Default to 'Quantity'
+            "price": "Prijs", // Defaults to 'Price'
+            "product-total": "Totaal", // Defaults to 'Total'
+            "total": "Totaal" // Defaults to 'Total'        
+            */
+        },
+        "customize": {
+            // "template": fs.readFileSync('template.html', 'base64') // Must be base64 encoded html
+        },
+    };
+    easyinvoice.createInvoice(data, function(result){
+        easyinvoice.download("result.pdf");
+    });
   }
   return (
     <>
@@ -57,6 +120,12 @@ function EntryItem(props) {
                       props.entry.operation==="sell"?
                       <li className="list-group-item">
                       <span><b>Profit: &nbsp;</b>{(props.entry.sellPrice-props.entry.purchasePrice)*props.entry.quantity}</span>
+                      </li>:""
+                    }
+                    {
+                      props.entry.operation==="sell"?
+                      <li className="list-group-item">
+                      <button onClick={() => downloadInvoice(props.entry, props.store)} className='btn-sm btn btn-dark'>Generate Bill</button>
                       </li>:""
                     }
               </ul>
