@@ -32,7 +32,7 @@ function AddItem(props) {
       props.setProgress(30);
         event.preventDefault();
         const { data } = await axios.post(
-            "https://istock.onrender.com/api/item/",
+            "https://i-stock-backend.vercel.app/api/item/",
             {...values, jwt: localStorage.getItem("jwt")},
             {
             withCredentials: true,
@@ -56,7 +56,7 @@ function AddItem(props) {
     } else {
       props.setProgress(40);
       const { data } = await axios.post(
-        "https://istock.onrender.com/api/auth/getstore",
+        "https://i-stock-backend.vercel.app/api/auth/getstore",
         {jwt: localStorage.getItem("jwt")},
         {
           withCredentials: true,

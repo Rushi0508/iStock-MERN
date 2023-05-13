@@ -18,7 +18,7 @@ function Dashboard(props) {
     } else {
       props.setProgress(30);
       const { data } = await axios.post(
-        "https://istock.onrender.com/api/auth/getstore",
+        "https://i-stock-backend.vercel.app/api/auth/getstore",
         {jwt: localStorage.getItem("jwt")},
         {
           withCredentials: true,

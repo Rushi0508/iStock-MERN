@@ -30,7 +30,7 @@ function Stock(props) {
             // const sid = cookies.sid;
             // console.log(sid);
             const { data } = await axios.post(
-                "https://istock.onrender.com/api/item/items",
+                "https://i-stock-backend.vercel.app/api/item/items",
                 {jwt: localStorage.getItem("jwt")},
                 {
                 withCredentials: true,
@@ -66,7 +66,7 @@ function Stock(props) {
         incloseref.current.click();
         props.setProgress(30);
         const { data } = await axios.post(
-            "https://istock.onrender.com/api/entry/stock-in",
+            "https://i-stock-backend.vercel.app/api/entry/stock-in",
             {...stock},
             {
             withCredentials: true,
@@ -90,7 +90,7 @@ function Stock(props) {
         outcloseref.current.click();
         props.setProgress(30);
         const { data } = await axios.post(
-            "https://istock.onrender.com/api/entry/stock-out",
+            "https://i-stock-backend.vercel.app/api/entry/stock-out",
             {...stock},
             {
             withCredentials: true,

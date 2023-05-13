@@ -19,7 +19,7 @@ const Entry = (props) => {
         else {
             props.setProgress(30);
             const { data } = await axios.post(
-                "https://istock.onrender.com/api/entry/entries",
+                "https://i-stock-backend.vercel.app/api/entry/entries",
                 {jwt: localStorage.getItem("jwt")},
                 {
                     withCredentials: true,
