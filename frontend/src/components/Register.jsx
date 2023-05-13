@@ -27,7 +27,7 @@ const Register = (props) => {
         event.preventDefault();
         try {
           const { data } = await axios.post(
-            "https://istock.onrender.com/api/auth/",
+            "https://i-stock-backend.vercel.app/api/auth/",
             {
               ...values,
             }, {
